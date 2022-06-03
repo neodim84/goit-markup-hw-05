@@ -7,6 +7,7 @@
     --secondary-bgc: #F5F4FA;
     --sprite-color: #AFB1B8;
     --sprite-bgc: rgba(255, 255, 255, 0.1);
+    --timing-func: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -75,7 +76,7 @@ h1, h2, h3, p {
         line-height: 1.14;
         letter-spacing: 0.02em;
 
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 250ms var(--timing-func);
 }
 
 .nav-link:hover,
@@ -100,7 +101,7 @@ h1, h2, h3, p {
 }
 
 .link-active:hover::after {
-        animation: scaleline 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        animation: scaleline 250ms var(--timing-func);
 }
 
 @keyframes scaleline {
@@ -125,7 +126,7 @@ h1, h2, h3, p {
         margin-right: 10px;
         fill: var(--primary-text-color);
 
-        transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: fill 250ms var(--timing-func);
 }
 
 .cont-link {
@@ -139,7 +140,7 @@ h1, h2, h3, p {
         line-height: 1.14;
         letter-spacing: 0.02em;
 
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 250ms var(--timing-func);
 }
 
 .cont-link:hover,
@@ -206,7 +207,7 @@ h1, h2, h3, p {
         letter-spacing: 0.06em;
         cursor: pointer;
 
-        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 250ms var(--timing-func);
 }
 
 .btn-order:hover, .btn-order:focus {
@@ -392,7 +393,7 @@ h1, h2, h3, p {
         height: 100%;
         border-radius: 50%;
 
-        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 250ms var(--timing-func);
 }
 
 .icon {
@@ -400,7 +401,7 @@ h1, h2, h3, p {
         height: 20px;
         fill: var(--sprite-color);
 
-        transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: fill 250ms var(--timing-func);
 }
 
 .icon-link:hover,
@@ -437,7 +438,7 @@ h1, h2, h3, p {
         outline: 1px solid var(--sprite-color);
         border-radius: 4px;
 
-        transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: outline 250ms var(--timing-func);
 }
 
 .client {
@@ -445,7 +446,7 @@ h1, h2, h3, p {
         height: 60px;
         fill: var(--sprite-color);
 
-        transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: fill 250ms var(--timing-func);
 }
 
 .client-link:hover,
@@ -502,7 +503,7 @@ h1, h2, h3, p {
 .cont-foot-link {
         color: rgba(255, 255, 255, 0.6);
 
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 250ms var(--timing-func);
 }
 
 .cont-foot-link:hover,
@@ -545,7 +546,7 @@ h1, h2, h3, p {
         border-radius: 50%;
         background-color: var(--sprite-bgc);
 
-        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 250ms var(--timing-func);
 }
 
 .icon-foot {
@@ -553,13 +554,14 @@ h1, h2, h3, p {
         height: 20px;
         fill: var(--primary-color);
 
-        transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: fill 250ms var(--timing-func);
 }
 
 .icon-flink:hover,
 .icon-flink:focus {
         background-color: var(--secondary-color);
 }
+
 /* Стили портфолио */
 
 
@@ -589,7 +591,7 @@ h1, h2, h3, p {
         text-align: center;
         cursor: pointer;
 
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 250ms var(--timing-func), background-color 250ms var(--timing-func), box-shadow 250ms var(--timing-func);
 }
 
 .btn-filter:active,
@@ -655,7 +657,7 @@ h1, h2, h3, p {
 .project-link {
         display: block;
 
-        transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: box-shadow 250ms var(--timing-func);
 }
 
 .project-thumb {
@@ -670,7 +672,7 @@ h1, h2, h3, p {
 
         background-color: rgba(33, 150, 243, 0.9);
         transform: translateY(100%);
-        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 250ms var(--timing-func);
 }
 
 .project-link:hover .project-overlay {
@@ -695,6 +697,7 @@ h1, h2, h3, p {
 .backdrop.is-hidden {
         visibility: hidden;
         opacity: 0;
+        transform: scale(0.5);
         pointer-events: none;
 }
 
@@ -704,10 +707,12 @@ h1, h2, h3, p {
         left: 0;
         width: 100vmax;
         height: 100vh;
+        visibility: 1;
+        opacity: 1;
+        transform: scale(1);
 
         background: rgba(0, 0, 0, 0.2);
-
-        transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 250ms var(--timing-func), transform 250ms var(--timing-func);
 }
 
 .modal {
@@ -722,18 +727,8 @@ h1, h2, h3, p {
         border-radius: 4px;
 
         transform: translate(-50%, -50%);
-        animation: scalemodal 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes scalemodal {
-        0% {
-                transform: scale(0);
-        }
-        
-        100% {
-                transform: scale(1);
-        }
-}
 .btn-close {
         position: absolute;
         top: 0;
@@ -747,5 +742,6 @@ h1, h2, h3, p {
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 50%;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        cursor: pointer;
 }
 
